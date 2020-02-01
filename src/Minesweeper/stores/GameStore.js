@@ -26,7 +26,7 @@ export class GameStore {
         initializeTime()
         initializeFlag()
         initializeRevealedSquareCount()
-        setMineCount(5)
+        setMineCount(10)
         setBoardSize(8)
         initializeBoardAdjustingSize()
     }
