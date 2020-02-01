@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/sooheesh.github.io/static/css/main.5ecd60fb.chunk.css",
-    "main.js": "/sooheesh.github.io/static/js/main.b77237df.chunk.js",
-    "main.js.map": "/sooheesh.github.io/static/js/main.b77237df.chunk.js.map",
-    "runtime-main.js": "/sooheesh.github.io/static/js/runtime-main.31e29d0d.js",
-    "runtime-main.js.map": "/sooheesh.github.io/static/js/runtime-main.31e29d0d.js.map",
-    "static/js/2.faa1aa12.chunk.js": "/sooheesh.github.io/static/js/2.faa1aa12.chunk.js",
-    "static/js/2.faa1aa12.chunk.js.map": "/sooheesh.github.io/static/js/2.faa1aa12.chunk.js.map",
-    "index.html": "/sooheesh.github.io/index.html",
-    "precache-manifest.b44547b517fd993c0092937e3483d2b2.js": "/sooheesh.github.io/precache-manifest.b44547b517fd993c0092937e3483d2b2.js",
-    "service-worker.js": "/sooheesh.github.io/service-worker.js",
-    "static/css/main.5ecd60fb.chunk.css.map": "/sooheesh.github.io/static/css/main.5ecd60fb.chunk.css.map",
-    "static/js/2.faa1aa12.chunk.js.LICENSE.txt": "/sooheesh.github.io/static/js/2.faa1aa12.chunk.js.LICENSE.txt"
+    "main.css": "/minesweeper/static/css/main.5ecd60fb.chunk.css",
+    "main.js": "/minesweeper/static/js/main.57b4bde8.chunk.js",
+    "main.js.map": "/minesweeper/static/js/main.57b4bde8.chunk.js.map",
+    "runtime-main.js": "/minesweeper/static/js/runtime-main.ffd00b1a.js",
+    "runtime-main.js.map": "/minesweeper/static/js/runtime-main.ffd00b1a.js.map",
+    "static/js/2.4c0bf891.chunk.js": "/minesweeper/static/js/2.4c0bf891.chunk.js",
+    "static/js/2.4c0bf891.chunk.js.map": "/minesweeper/static/js/2.4c0bf891.chunk.js.map",
+    "index.html": "/minesweeper/index.html",
+    "precache-manifest.69955a8f2a58b4ff1d30f534ae8fb171.js": "/minesweeper/precache-manifest.69955a8f2a58b4ff1d30f534ae8fb171.js",
+    "service-worker.js": "/minesweeper/service-worker.js",
+    "static/css/main.5ecd60fb.chunk.css.map": "/minesweeper/static/css/main.5ecd60fb.chunk.css.map",
+    "static/js/2.4c0bf891.chunk.js.LICENSE.txt": "/minesweeper/static/js/2.4c0bf891.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.31e29d0d.js",
-    "static/js/2.faa1aa12.chunk.js",
+    "static/js/runtime-main.ffd00b1a.js",
+    "static/js/2.4c0bf891.chunk.js",
     "static/css/main.5ecd60fb.chunk.css",
-    "static/js/main.b77237df.chunk.js"
+    "static/js/main.57b4bde8.chunk.js"
   ]
 }
