@@ -1,17 +1,19 @@
-const IS_A_MINE = -1;
+const IS_MINE = -1;
 const IS_FLAGGED = -1;
-const IS_VISIBLE = 1;
+const IS_REVEALED = 1;
+const IS_NOT_REVEALED = 0;
 
-const BOARD_CLEARED = 0;
+const BOARD_INITIALIZED = 0;
 const BOARD_SET = 1;
 const MINE_DETONATED = 2;
 const GAME_CLEARED = 3;
 
 export default {
-    IS_A_MINE,
+    IS_MINE,
     IS_FLAGGED,
-    IS_VISIBLE,
-    BOARD_CLEARED,
+    IS_REVEALED,
+    IS_NOT_REVEALED,
+    BOARD_INITIALIZED,
     BOARD_SET,
     MINE_DETONATED,
     GAME_CLEARED

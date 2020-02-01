@@ -1,16 +1,10 @@
 import React from 'react';
-import ResetButton from './minesweeper/ResetButton';
-import MineCount from './minesweeper/MineCount';
-import ElapsedTime from './minesweeper/ElapsedTime';
-import Board from './minesweeper/Board';
+import MineSweeper from './Minesweeper/components';
 
 function App() {
   return (
     <div>
-        <MineCount/>
-        <ResetButton/>
-        <ElapsedTime/>
-        <Board/>
+        <MineSweeper/>
     </div>
   );
 }
