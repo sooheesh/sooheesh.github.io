@@ -1,12 +1,15 @@
 import React from 'react';
-import { observer } from "mobx-react"
+import {inject, observer} from "mobx-react"
 import styles from './styles.js';
 
-
+@inject('gamePlay')
 @observer
 class ResetButton extends React.Component {
     render() {
-        return <div>ResetButton</div>
+        const {restartGame} = this.props.gamePlay;
+        return (
+            <div onClick={() => restartGame()}>ResetButton</div>
+        )
     }
 }
 

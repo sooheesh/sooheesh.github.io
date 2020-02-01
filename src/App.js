@@ -1,13 +1,13 @@
 import React from 'react';
 import ResetButton from './minesweeper/ResetButton';
-import LandMineCount from './minesweeper/LandMineCount';
+import MineCount from './minesweeper/MineCount';
 import ElapsedTime from './minesweeper/ElapsedTime';
 import Board from './minesweeper/Board';
 
 function App() {
   return (
     <div>
-        <LandMineCount/>
+        <MineCount/>
         <ResetButton/>
         <ElapsedTime/>
         <Board/>
