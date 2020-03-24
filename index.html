@@ -484,15 +484,15 @@
   ];
 
   var qnt = [
-    "#05d8f3",
-    "#fddb18",
-    "#fe4fea",
-    "#1ccb11",
-    "#f21421",
-    "#0b5ed7",
-    "#fc7e0d"
+    "#05d8f3", // aqua
+    "#fddb18", // yellow
+    "#fe4fea", // violet
+    "#1ccb11", // green
+    "#f21421", // red
+    "#0b5ed7", // blue
+    "#fc7e0d" // orange
   ];
-  var qntborder = [
+  var qntlight = [
     "#92f9f4",
     "#fdf2d7",
     "#fdd2fb",
@@ -500,6 +500,15 @@
     "#f78fa8",
     "#2cdbf7",
     "#fcca72"
+  ]
+  var qntdark = [
+    "#148ccd",
+    "#c4730f",
+    "#400ba5",
+    "#068b11",
+    "#920c11",
+    "#083bad",
+    "#eb4a06"
   ]
 
   //rgb(232, 232, 232)
@@ -953,7 +962,7 @@
             for (x = 0; x < 10; x++) {
               tdcss = "td.td" + y + x;
               color = qnt[black[y][x]];
-              $(tdcss).css({"background": `linear-gradient(135deg, ${qntborder[black[y][x]]}, ${color} 60%)`, "border": `2px outset transparent`});
+              $(tdcss).css({"background": `linear-gradient(135deg, ${qntlight[black[y][x]]}, ${color} 60%, ${qntdark[black[y][x]]})`, "border": `2px outset transparent`});
             }
           }
         }
@@ -992,7 +1001,7 @@
                   $(tdcss).css({"background": color, "border": `none`});
                 } else {
                   color = qnt[black[y + cnt][x]];
-                  $(tdcss).css({"background": `linear-gradient(135deg, ${qntborder[black[y + cnt][x]]}, ${color} 60%)`, "border": `2px outset transparent`});
+                  $(tdcss).css({"background": `linear-gradient(135deg, ${qntlight[black[y + cnt][x]]}, ${color} 60%, ${qntdark[black[y + cnt][x]]})`, "border": `2px outset transparent`});
                 }
 
               }
@@ -1014,7 +1023,7 @@
     color = qnt[idx];
     for (i = 0; i < block.length; i++) {
       tdcss = "td.td" + block[i];
-      $(tdcss).css({"background": `linear-gradient(135deg, ${qntborder[idx]}, ${color} 60%)`, "border": `2px outset transparent`});
+      $(tdcss).css({"background": `linear-gradient(135deg, ${qntlight[idx]}, ${color} 60%, ${qntdark[idx]})`, "border": `2px outset transparent`});
     }
   }
 
