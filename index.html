@@ -493,14 +493,15 @@
     "#fc7e0d"
   ];
   var qntborder = [
-    "#05d8f3",
-    "#fddb18",
-    "#fe4fea",
-    "#1ccb11",
-    "#f21421",
-    "#0b5ed7",
-    "#fc7e0d"
+    "#92f9f4",
+    "#fdf2d7",
+    "#fdd2fb",
+    "#ecf268",
+    "#f78fa8",
+    "#2cdbf7",
+    "#fcca72"
   ]
+
   //rgb(232, 232, 232)
 
   //테이블 인식 생성
@@ -952,7 +953,7 @@
             for (x = 0; x < 10; x++) {
               tdcss = "td.td" + y + x;
               color = qnt[black[y][x]];
-              $(tdcss).css({"background": `linear-gradient(135deg, white, ${color} 60%)`, "border": `1px outset ${qntborder[black[y][x]]}`});
+              $(tdcss).css({"background": `linear-gradient(135deg, ${qntborder[black[y][x]]}, ${color} 60%)`, "border": `2px outset transparent`});
             }
           }
         }
@@ -991,7 +992,7 @@
                   $(tdcss).css({"background": color, "border": `none`});
                 } else {
                   color = qnt[black[y + cnt][x]];
-                  $(tdcss).css({"background": `linear-gradient(135deg, white, ${color} 60%)`, "border": `1px outset ${qntborder[black[y + cnt][x]]}`});
+                  $(tdcss).css({"background": `linear-gradient(135deg, ${qntborder[black[y + cnt][x]]}, ${color} 60%)`, "border": `2px outset transparent`});
                 }
 
               }
@@ -1013,7 +1014,7 @@
     color = qnt[idx];
     for (i = 0; i < block.length; i++) {
       tdcss = "td.td" + block[i];
-      $(tdcss).css({"background": `linear-gradient(135deg, white, ${color} 60%)`, "border": `1px outset ${qntborder[idx]}`});
+      $(tdcss).css({"background": `linear-gradient(135deg, ${qntborder[idx]}, ${color} 60%)`, "border": `2px outset transparent`});
     }
   }
 
