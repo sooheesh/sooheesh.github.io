@@ -27,6 +27,7 @@
             bottom: 0;
             overflow: hidden;
             -webkit-overflow-scrolling: touch;
+            background: linear-gradient(#113369, #5eacf7);
         }
 
         /*baseball*/
@@ -111,11 +112,12 @@
         .progress {
             width: 150px;
             margin-bottom: 0px;
+            background-color: rgba(245, 245, 245, 0.2);
         }
 
         .progress-bar {
-            /*background-color: rgb(55, 191, 230);*/
-            background-color: rgba(0, 0, 0, 0.2);
+            /*background-color: #0b5ed7;*/
+            background-color: aqua;
         }
 
         .id {
@@ -158,9 +160,7 @@
             align-items: center;
             justify-content: flex-end;
             height: 45px;
-            background-color: #fafafa;
-            border-bottom: 1px solid #e6e6e6;
-            color: #999;
+            color: #fff;
         }
 
         div#min {
@@ -196,17 +196,21 @@
             justify-content: center;
         }
 
+        .tetris-table tbody {
+            /*background-color: #5d5d5d*/
+        }
+
         .tetris-table td {
             width: 25px;
             height: 25px;
-            background-color: rgb(240, 240, 240);
+            background-color: rgba(51, 51, 51, 0.4);
         }
 
         .game-end {
-            color: #999;
+            color: #fff;
             background-color: rgba(0, 0, 0, 0.2);
             position: absolute;
-            top: 90px;
+            top: 0;
             left: 0;
             right: 0;
             bottom: 0;
@@ -216,7 +220,7 @@
         }
 
         .game-end .replay {
-            color: #999;
+            color: black;
             background-color: #fff;
             border: none;
             border-radius: 25px;
@@ -236,7 +240,7 @@
         .tetris-table2 td {
             width: 25px;
             height: 25px;
-            background-color: rgb(240, 240, 240);
+            /*background-color: rgb(240, 240, 240);*/
         }
 
         .tetris-table1 {
@@ -251,7 +255,7 @@
         .tetris-table1 td {
             width: 25px;
             height: 25px;
-            background-color: rgb(240, 240, 240);
+            /*background-color: rgb(240, 240, 240);*/
         }
 
         .tetris-fight-tables {
@@ -276,7 +280,7 @@
         /*반응형에 맞게 마진 조절*/
 
         .btn.id, a#lvl, a#lvl:hover {
-            color: #999;
+            color: white;
         }
 
         .exp {
@@ -286,7 +290,7 @@
         .game-title {
             position: absolute;
             left: 20px;
-            color: black;
+            color: #fff;
             font-weight: 700;
             font-size: 14px;
         }
@@ -321,9 +325,9 @@
                 width: 25vw;
             }
 
-            .game-end {
-                top: 24vw;
-            }
+            /*.game-end {*/
+            /*    top: 0;*/
+            /*}*/
 
             .dropdown, .lvl, .exp {
                 margin-right: 2vw;
@@ -342,7 +346,7 @@
 
 <!--헤더-->
 <div class="header">
-    <div class="logo">sooheesong.com</div>
+<!--    <div class="logo">sooheesong.com</div>-->
 
     <div class="menu">
         <!--로그인 이름-->
@@ -480,14 +484,23 @@
   ];
 
   var qnt = [
-    "rgb(0, 221, 179)",
-    "rgb(246, 145, 67)",
-    "rgb(255, 200, 56)",
-    "rgb(250, 87, 123)",
-    "rgb(5, 187, 21)",
-    "rgb(55, 191, 230)",
-    "rgb(123, 227, 93)"
+    "#05d8f3",
+    "#fddb18",
+    "#fe4fea",
+    "#1ccb11",
+    "#f21421",
+    "#0b5ed7",
+    "#fc7e0d"
   ];
+  var qntborder = [
+    "#05d8f3",
+    "#fddb18",
+    "#fe4fea",
+    "#1ccb11",
+    "#f21421",
+    "#0b5ed7",
+    "#fc7e0d"
+  ]
   //rgb(232, 232, 232)
 
   //테이블 인식 생성
@@ -900,7 +913,7 @@
   function clear_block() {
     for (i = 0; i < block.length; i++) {
       tdcss = "td.td" + block[i];
-      $(tdcss).css("background-color", "rgb(240, 240, 240)");
+      $(tdcss).css({"background": "rgba(51, 51, 51, 0.4)", "border": "none"});
     }
   }
 
@@ -927,7 +940,7 @@
         if (full[y] === 1) {
           for (x = 0; x < 10; x++) {
             tdcss = "td.td" + y + x;
-            $(tdcss).css("background-color", "rgb(240, 240, 240)");
+            $(tdcss).css({"background": "rgba(51, 51, 51, 0.4)", "border": "none"});
           }
         }
       }
@@ -939,7 +952,7 @@
             for (x = 0; x < 10; x++) {
               tdcss = "td.td" + y + x;
               color = qnt[black[y][x]];
-              $(tdcss).css("background-color", color);
+              $(tdcss).css({"background": `linear-gradient(135deg, white, ${color} 60%)`, "border": `1px outset ${qntborder[black[y][x]]}`});
             }
           }
         }
@@ -952,7 +965,7 @@
           if (full[y] === 1) {
             for (x = 0; x < 10; x++) {
               tdcss = "td.td" + y + x;
-              $(tdcss).css("background-color", "rgb(240, 240, 240)");
+              $(tdcss).css({"background": "rgba(51, 51, 51, 0.4)", "border": "none"});
             }
           }
         }
@@ -974,11 +987,13 @@
                 black[y + cnt][x] = black[y][x];
                 tdcss = "td.td" + (y + cnt) + x;
                 if (black[y + cnt][x] === null) {
-                  color = "rgb(240, 240, 240)";
+                  color = "rgba(51, 51, 51, 0.4)";
+                  $(tdcss).css({"background": color, "border": `none`});
                 } else {
                   color = qnt[black[y + cnt][x]];
+                  $(tdcss).css({"background": `linear-gradient(135deg, white, ${color} 60%)`, "border": `1px outset ${qntborder[black[y + cnt][x]]}`});
                 }
-                $(tdcss).css("background-color", color);
+
               }
             }
             point_line();
@@ -998,7 +1013,7 @@
     color = qnt[idx];
     for (i = 0; i < block.length; i++) {
       tdcss = "td.td" + block[i];
-      $(tdcss).css("background-color", color);
+      $(tdcss).css({"background": `linear-gradient(135deg, white, ${color} 60%)`, "border": `1px outset ${qntborder[idx]}`});
     }
   }
 
@@ -1025,7 +1040,7 @@
     $(min).css("transition", "width .6s ease");
     $(pro).css("transition", "width .6s ease");
 
-    $(min).css("background-color", "rgba(0, 0, 0, 0.2)");
+    $(min).css("background-color", "#85ffff");
 
     //점수가 100 이상이면 레벨 업
     if (newPoint >= 100) {
@@ -1056,11 +1071,11 @@
         $(min).css("width", "0");
         $(pro).css("transition", "width .6s ease");
         $(pro).css("width", newPoint + "%");
-        $(lvl).css("color", "rgb(55, 191, 230)");
+        $(lvl).css("color", "#0b5ed7");
         lvl.innerHTML = "Lv. " + level;
         $(lvl).fadeOut(200).fadeIn(200).fadeOut(200).fadeIn(200);
         setTimeout(function () {
-          $(lvl).css("color", "#999");
+          $(lvl).css("color", "#fff");
         }, 1600);
       }, 1400);
 
