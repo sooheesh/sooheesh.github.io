@@ -1,1 +1,1096 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"/><link rel="icon" href="/favicon.ico"/><meta name="viewport" content="width=device-width,initial-scale=1"/><meta name="theme-color" content="#000000"/><meta name="description" content="Web site created using create-react-app"/><link rel="apple-touch-icon" href="/logo192.png"/><link rel="manifest" href="/manifest.json"/><title>React App</title><link href="/static/css/main.5ecd60fb.chunk.css" rel="stylesheet"></head><body><noscript>You need to enable JavaScript to run this app.</noscript><div id="root"></div><script>!function(e){function r(r){for(var n,i,l=r[0],p=r[1],f=r[2],c=0,s=[];c<l.length;c++)i=l[c],Object.prototype.hasOwnProperty.call(o,i)&&o[i]&&s.push(o[i][0]),o[i]=0;for(n in p)Object.prototype.hasOwnProperty.call(p,n)&&(e[n]=p[n]);for(a&&a(r);s.length;)s.shift()();return u.push.apply(u,f||[]),t()}function t(){for(var e,r=0;r<u.length;r++){for(var t=u[r],n=!0,l=1;l<t.length;l++){var p=t[l];0!==o[p]&&(n=!1)}n&&(u.splice(r--,1),e=i(i.s=t[0]))}return e}var n={},o={1:0},u=[];function i(r){if(n[r])return n[r].exports;var t=n[r]={i:r,l:!1,exports:{}};return e[r].call(t.exports,t,t.exports,i),t.l=!0,t.exports}i.m=e,i.c=n,i.d=function(e,r,t){i.o(e,r)||Object.defineProperty(e,r,{enumerable:!0,get:t})},i.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},i.t=function(e,r){if(1&r&&(e=i(e)),8&r)return e;if(4&r&&"object"==typeof e&&e&&e.__esModule)return e;var t=Object.create(null);if(i.r(t),Object.defineProperty(t,"default",{enumerable:!0,value:e}),2&r&&"string"!=typeof e)for(var n in e)i.d(t,n,function(r){return e[r]}.bind(null,n));return t},i.n=function(e){var r=e&&e.__esModule?function(){return e.default}:function(){return e};return i.d(r,"a",r),r},i.o=function(e,r){return Object.prototype.hasOwnProperty.call(e,r)},i.p="/";var l=this.webpackJsonpminesweeper=this.webpackJsonpminesweeper||[],p=l.push.bind(l);l.push=r,l=l.slice();for(var f=0;f<l.length;f++)r(l[f]);var a=p;t()}([])</script><script src="/static/js/2.7639bf7e.chunk.js"></script><script src="/static/js/main.50f9a077.chunk.js"></script></body></html>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+
+    <!--font-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Orbitron">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=VT323">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+        @CHARSET "UTF-8";
+
+        * {
+            -webkit-user-select: none;
+        }
+
+        html,
+        body {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            overflow: hidden;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        /*baseball*/
+        .btn.id, .btn.lvl {
+            padding: 0;
+        }
+
+        button#replay.focus, button#replay:focus {
+            color: #333;
+            background-color: white;
+            border-color: #8c8c8c;
+        }
+
+        .board {
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 35px;
+            padding: 15px 15px 28px 15px;
+            position: relative;
+            z-index: 9999;
+            text-align: center;
+        }
+
+        .title {
+            height: 233px;
+            margin-top: 89px;
+            z-index: 9999;
+            position: relative;
+            text-align: center;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .title h1 {
+            padding-top: 109px
+        }
+
+        .number {
+            margin: auto;
+            display: inline-flex;
+        }
+
+        div#msg, div#msg2 {
+            margin-top: 18px;
+            text-align: center;
+            font-family: 'VT323', monospace;
+            font-size: 20px;
+        }
+
+        input {
+            width: 50px;
+            height: 50px;
+            padding: 5px;
+            text-align: center;
+            font-size: 40px;
+            margin-right: 20px;
+        }
+
+        input#num3 {
+            margin-right: 0px;
+        }
+
+        /*숫자 입력칸의 화살표를 삭제*/
+        input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
+            -webkit-appearance: none !important;
+            margin: 0;
+        }
+
+        div#ans1, div#ans2, div#ans3 {
+            width: 52px;
+            height: 52px;
+            padding: 5px;
+            text-align: center;
+            font-size: 41px;
+            margin-right: 20px;
+            font-family: Arial;
+
+        }
+
+        div#ans3 {
+            margin-right: 0px;
+        }
+
+        .progress {
+            width: 150px;
+            margin-bottom: 0px;
+        }
+
+        .progress-bar {
+            /*background-color: rgb(55, 191, 230);*/
+            background-color: rgba(0, 0, 0, 0.2);
+        }
+
+        .id {
+            height: 42px;
+        }
+
+        .btn-link {
+            color: black;
+        }
+
+        .dropdown, .lvl, .exp {
+            display: inline-block;
+            margin-right: 10px;
+        }
+
+        .lvl {
+            font-family: 'VT323', monospace;
+            font-size: 20px;
+        }
+
+        .header {
+            margin-right: 0px;
+            margin-left: auto;
+            height: 45px;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: 100;
+            margin: 0;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-bottom: 1px solid rgba(0, 0, 0, .0975);
+        }
+
+        .menu {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            height: 45px;
+            background-color: #fafafa;
+            border-bottom: 1px solid #e6e6e6;
+            color: #999;
+        }
+
+        div#min {
+            /*top: -20px;*/
+            position: relative;
+            background-color: red;
+            width: 0;
+        }
+
+        a#lvl, a#lvl:hover {
+            color: black;
+        }
+
+        /*반응형에 맞게 마진 조절*/
+        @media all and (max-width: 670px) {
+            .title {
+                margin-top: 0px;
+            }
+        }
+
+
+        /*tetris*/
+        .tetris-table {
+            border-spacing: 1px;
+            border-collapse: separate;
+            position: absolute;
+            top: 90px;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .tetris-table td {
+            width: 25px;
+            height: 25px;
+            background-color: rgb(240, 240, 240);
+        }
+
+        .game-end {
+            color: #999;
+            background-color: rgba(0, 0, 0, 0.2);
+            position: absolute;
+            top: 90px;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .game-end .replay {
+            color: #999;
+            background-color: #fff;
+            border: none;
+            border-radius: 25px;
+        }
+
+
+        /*tetrisFight*/
+        .tetris-table2 {
+            /*border-collapse: collapse;*/
+            /*border: 1px solid rgb(232, 232, 232);*/
+            margin: auto;
+            border-spacing: 1px;
+            border-collapse: separate;
+            display: inline-flex;
+        }
+
+        .tetris-table2 td {
+            width: 25px;
+            height: 25px;
+            background-color: rgb(240, 240, 240);
+        }
+
+        .tetris-table1 {
+            /*border-collapse: collapse;*/
+            /*border: 1px solid rgb(232, 232, 232);*/
+            margin: auto;
+            border-spacing: 1px;
+            border-collapse: separate;
+            display: inline-flex;
+        }
+
+        .tetris-table1 td {
+            width: 25px;
+            height: 25px;
+            background-color: rgb(240, 240, 240);
+        }
+
+        .tetris-fight-tables {
+            text-align: center;
+            margin: 50px auto;
+            display: flex;
+
+        }
+
+        .wait-player {
+            margin: auto;
+            border-spacing: 1px;
+            border-collapse: separate;
+            display: inline-flex;
+            width: 261px;
+            height: 573px;
+            padding-top: 200px;
+            padding-left: 60px;
+        }
+
+
+        /*반응형에 맞게 마진 조절*/
+
+        .btn.id, a#lvl, a#lvl:hover {
+            color: #999;
+        }
+
+        .exp {
+            margin-right: 20px;
+        }
+
+        .game-title {
+            position: absolute;
+            left: 20px;
+            color: black;
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        @media all and (max-width: 670px) {
+            .logo {
+                height: 12vw;
+            }
+
+            .menu {
+                height: 12vw;
+            }
+
+            .tetris-table {
+                top: 24vw;
+            }
+
+            .tetris-table td {
+                width: 5vw;
+                height: 5vw;
+            }
+
+            .btn.id {
+                font-size: 3.5vw;
+            }
+
+            .btn.lvl {
+                font-size: 4.5vw;
+            }
+
+            .progress {
+                width: 25vw;
+            }
+
+            .game-end {
+                top: 24vw;
+            }
+
+            .dropdown, .lvl, .exp {
+                margin-right: 2vw;
+            }
+
+            .game-title {
+                left: 4vw;
+                font-size: 3.5vw;
+            }
+        }
+    </style>
+    <title>Tetris</title>
+</head>
+<body>
+
+
+<!--헤더-->
+<div class="header">
+    <div class="logo">sooheesong.com</div>
+
+    <div class="menu">
+        <!--로그인 이름-->
+        <!--<div class="dropdown">-->
+        <!--<button class="id btn btn-link dropdown-toggle" type="button" data-toggle="dropdown">-->
+        <!--{{userNameList[userNameIdx]}}-->
+        <!--</button>-->
+        <!--<ul class="dropdown-menu">-->
+        <!--<li><a href="#">[비밀번호 변경]</a></li>-->
+        <!--<li><a href="#">[로그아웃]</a></li>-->
+        <!--</ul>-->
+        <!--</div>-->
+        <!--끝 - 로그인 이름-->
+
+        <!--<div class="game-logo">-->
+        <!--<img src="img/Tetris-350x288.png">-->
+        <!--</div>-->
+        <div class="game-title">TETRIS</div>
+        <!--레벨정보-->
+        <div>
+            <button class="lvl btn btn-link" type="button">
+                <a id="lvl" href="#">Lv. 0</a>
+            </button>
+        </div>
+        <!--끝 - 레벨정보-->
+
+        <!--경험치 정보-->
+        <div class="exp">
+            <div class="progress">
+                <div id="pro" class="progress-bar"></div>
+                <div id="min" class="progress-bar"></div>
+            </div>
+        </div>
+        <!--끝 - 경험치 정보-->
+    </div>
+</div>
+<!--끝 - 헤더-->
+
+<table class="tetris-table">
+    <tbody id="tetris_table">
+    </tbody>
+</table>
+<div class="game-end" style="display: none;">
+    <!--다시하기 버튼-->
+    <button id="replay" onclick="replay()" class="btn btn-default replay">replay</button>
+    <!--끝 - 다시하기 버튼-->
+</div>
+
+<div id="key" style="display: none;"></div>
+</body>
+</html>
+
+<script>
+  var tetrisTable = '';
+  for (var r = 1; r < 23; r++) {
+    tetrisTable += '<tr>'
+    for (var d = 0; d < 10; d++) {
+      tetrisTable += '<td class="td' + r + d + '"></td>';
+    }
+    tetrisTable += '</tr>'
+  }
+  document.getElementById('tetris_table').innerHTML = tetrisTable;
+
+  var idx, rotate, block = [];
+  var h_loc, v_loc;
+  var up, bottom, left, right;
+
+  var obstacle = false;
+
+  var godown, downtime = 500;
+
+  var tdcss;
+  var i, k;
+
+  var black = [];
+  var full = [];
+
+  var x, y;
+
+  var min = [], max = [];
+
+  var line = 0, cnt = 0;
+  var point = 0, level = 0;
+  var newPoint, oldPoint, minPoint;
+  var color;
+
+  var clean;
+  var game_end = false;
+
+
+  //블럭 종류별로 생성
+  var blocks = [];
+
+  blocks[0] = [
+    [10, 11, 12, 13],
+    [11, 21, 31, 41],
+    [10, 11, 12, 13],
+    [12, 22, 32, 42]
+  ];
+  blocks[1] = [
+    [10, 11, 20, 21],
+    [10, 11, 20, 21],
+    [10, 11, 20, 21],
+    [10, 11, 20, 21]
+  ];
+  blocks[2] = [
+    [11, 20, 21, 22],
+    [11, 20, 21, 31],
+    [10, 11, 12, 21],
+    [11, 21, 22, 31]
+  ];
+  blocks[3] = [
+    [11, 12, 20, 21],
+    [10, 20, 21, 31],
+    [11, 12, 20, 21],
+    [11, 21, 22, 32]
+  ];
+  blocks[4] = [
+    [10, 11, 21, 22],
+    [11, 20, 21, 30],
+    [10, 11, 21, 22],
+    [12, 21, 22, 31]
+  ];
+  blocks[5] = [
+    [10, 20, 21, 22],
+    [11, 21, 30, 31],
+    [10, 11, 12, 22],
+    [11, 12, 21, 31]
+  ];
+  blocks[6] = [
+    [12, 20, 21, 22],
+    [10, 11, 21, 31],
+    [10, 11, 12, 20],
+    [11, 21, 31, 32]
+  ];
+
+  var qnt = [
+    "rgb(0, 221, 179)",
+    "rgb(246, 145, 67)",
+    "rgb(255, 200, 56)",
+    "rgb(250, 87, 123)",
+    "rgb(5, 187, 21)",
+    "rgb(55, 191, 230)",
+    "rgb(123, 227, 93)"
+  ];
+  //rgb(232, 232, 232)
+
+  //테이블 인식 생성
+  for (i = 0; i < 23; i++) {
+    black.push([]);
+    full.push(0);
+    for (k = 0; k < 10; k++) {
+      black[i].push(null);                            //[0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+    }
+  }
+  console.table([black]);
+  console.log(JSON.stringify(full));
+
+  //key
+  var key = document.getElementById("key");
+  var stop = false;
+  //입력받는다
+  document.addEventListener("keydown", function (event) {
+    console.log(event);
+    key.innerHTML = event.code;
+
+    if (game_end === false) {
+      switch (event.code) {
+        case "ArrowLeft":
+          if (stop == false)
+            go_left();
+          break;
+        case "ArrowRight":
+          if (stop == false)
+            go_right();
+          break;
+        case "Escape":
+          if (stop == false) {
+            stop_block();
+          } else {
+            block_down(downtime);
+          }
+          stop = !stop;
+          break;
+        case "Space":
+          if (block == "") {
+            create_block();
+          } else if (stop == true) {
+            block_down();
+            stop = !stop;
+          } else if (stop == false) {
+            // 블럭을 맨 밑으로
+            spacebar();
+          }
+          break;
+        case "ArrowDown":
+          go_down();
+          break;
+        case "ArrowUp":
+          rotate_left();
+          break;
+
+        case "KeyC":
+          row_clean();
+          break;
+      }
+    }
+  });
+
+  var touchstartX, touchstartY, touchendX, touchendY, angle, touchstartT, touchendT;
+  var move, movestartX, movestartY, moved, wentDown, rotateleft;
+  document.addEventListener("touchstart", function (event) {
+    touchstartX = event.touches[0].clientX;
+    touchstartY = event.touches[0].clientY;
+    touchendX = event.touches[0].clientX;
+    touchendY = event.touches[0].clientY;
+    movestartX = touchstartX;
+    movestartY = touchstartY;
+    move = false;
+    moved = false;
+    wentDown = false;
+    touchstartT = (new Date()).getTime();
+    rotateleft = false;
+  });
+
+  document.addEventListener("touchmove", function (event) {
+    touchendX = event.touches[0].clientX;
+    touchendY = event.touches[0].clientY;
+    angle = Math.atan2(touchendY - touchstartY, touchendX - touchstartX) * 180 / Math.PI;
+
+    if (!move && Math.abs(touchendY - movestartY) > 30 || Math.abs(touchendX - movestartX) > 15) {
+      movestartX = touchendX;
+      movestartY = touchendY;
+      move = true;
+    }
+
+    if (!game_end && !stop && move) {
+      // left
+      if ((angle < -135 && angle >= -180) || (angle > 135 && angle <= 180)) {
+        go_left();
+        wentDown = false;
+      }
+      // right
+      if ((angle > -45 && angle <= 0) || (angle >= 0 && angle < 45)) {
+        go_right();
+        wentDown = false;
+      }
+      // down
+      if (angle > 45 && angle < 135) {
+        go_down();
+        wentDown = true;
+      }
+      move = false;
+      moved = true;
+    }
+
+  });
+
+  document.addEventListener("touchend", function (event) {
+
+    touchendT = (new Date()).getTime();
+    if (!moved && touchendT - touchstartT <= 300) {
+      rotateleft = true;
+    }
+
+    if (game_end === false) {
+
+      if (block == "") {
+        create_block();
+      } else if (stop == true) {
+        block_down();
+        stop = !stop;
+      } else if (stop == false) {
+        if (wentDown) {
+          // 블럭을 맨 밑으로
+          spacebar();
+        } else if (!moved && rotateleft) {
+          rotate_left();
+        }
+      }
+
+      event.preventDefault();
+    }
+
+  });
+
+  function create_block() {
+    move = false;
+
+    h_loc = 3;
+
+    // 0~6 랜덤 숫자 생성 (최대, 최소값 포함: Math.floor(Math.random() * (max - min + 1)) + min;)
+    idx = Math.floor(Math.random() * (6 + 1));
+
+    console.log("color: " + color);
+
+    // rotate 상태: 0번째
+    rotate = 0;
+
+    //블럭을 생성
+    block = blocks[idx][rotate].slice(0);
+    //블럭을 중앙에 위치
+    for (i = 0; i < block.length; i++) {
+      block[i] += h_loc;
+    }
+    for (i = 0; i < block.length; i++) {
+      y = Math.floor((block[i] / 10));
+      x = block[i] % 10;
+      //블럭에 블럭이 이미 있으면
+      if (black[y][x] !== null) {
+        obstacle = true;
+        break;
+      } else {
+        obstacle = false;
+      }
+    }
+    if (obstacle == false) {
+      //화면에 블럭 표시
+      color_block();
+      console.log("idx: " + idx);
+      console.log("block : " + JSON.stringify(block));
+      console.log("blocks : " + JSON.stringify(blocks));
+      block_edge();
+
+      if (line < 4) {
+        downtime = 1000;
+      } else if (line < 8) {
+        downtime = 800;
+      } else if (line < 12) {
+        downtime = 600;
+      } else {
+        downtime = 500;
+      }
+      block_down(downtime);
+
+    } else {
+      //게임종료
+      game_end = true;
+      stop_block();
+      // $(".tetris-table").css("display", "none");
+      $(".game-end").css("display", "flex");
+    }
+  }
+
+  function block_down(downtime) {
+    godown = setInterval(go_down, downtime);
+  }
+
+  function stop_block() {
+    clearInterval(godown);
+  }
+
+  function spacebar() {
+    stop_block();
+    block_down(5);
+  }
+
+  function go_down() {
+    if (bottom !== 22) {
+      //이동하려는 칸이 채워져있는지 확인(block이 1이면 채워져 있는 것)
+      for (i = 0; i < block.length; i++) {
+        y = Math.floor((block[i] / 10));
+        x = block[i] % 10;
+        //블럭의 아래
+        console.log("y: " + y);
+        console.log("x: " + x);
+        console.log("black[" + (y + 1) + "][" + x + "]: " + black[y + 1][x]);
+        if (black[y + 1][x] !== null) {
+          obstacle = true;
+          break;
+        } else {
+          obstacle = false;
+        }
+      }
+      if (obstacle === false) {
+        clear_block();
+        //부품 하나씩 아래로 보내줘야함.
+        for (i = 0; i < block.length; i++) {
+          block[i] += 10;
+        }
+        up++;
+        bottom++;
+        //화면에 블럭 표시
+        color_block();
+      } else {
+        //현재블럭 정지
+        clearInterval(godown);
+        //black에 저장
+        for (i = 0; i < block.length; i++) {
+          y = Math.floor((block[i] / 10));
+          x = block[i] % 10;
+          black[y][x] = idx;
+
+        }
+        console.log(JSON.stringify(black));
+        //화면에 블럭 표시
+        color_block();
+        //줄이 모두 채워졌으면 삭제
+        row_clean();
+        if (clean === 0) {
+          console.log("clean !== 0: " + Boolean(clean !== 0));
+          //새로운 블럭 생성
+          create_block();
+          console.log("create_block clean false");
+        }
+      }
+    } else {
+      //현재블럭 정지
+      clearInterval(godown);
+      //black에 저장
+      for (i = 0; i < block.length; i++) {
+        y = Math.floor((block[i] / 10));
+        x = block[i] % 10;
+        black[y][x] = idx;
+
+      }
+      console.log(JSON.stringify(black));
+      //화면에 블럭 표시
+      color_block();
+      //줄이 모두 채워졌으면 삭제
+      row_clean();
+      if (clean === 0) {
+        console.log("clean !== 0: " + Boolean(clean !== 0));
+        //새로운 블럭 생성
+        create_block();
+        console.log("create_block clean false");
+      }
+    }
+  }
+
+  function go_left() {
+    if (left !== 0) {
+      for (i = 0; i < block.length; i++) {
+        y = Math.floor((block[i] / 10));
+        x = block[i] % 10;
+        if (black[y][x - 1] !== null) {
+          obstacle = true;
+          break;
+        } else {
+          obstacle = false;
+        }
+      }
+      if (obstacle === false) {
+        clear_block();
+        //부품 하나씩 왼쪽으로 보내줘야함.
+        for (i = 0; i < block.length; i++) {
+          block[i] -= 1;
+        }
+        left--;
+        right--;
+        h_loc--;
+        //화면에 블럭 표시
+        color_block();
+      }
+    }
+  }
+
+  function go_right() {
+    if (right !== 9) {
+      for (i = 0; i < block.length; i++) {
+        y = Math.floor((block[i] / 10));
+        x = block[i] % 10;
+        if (black[y][x + 1] !== null) {
+          obstacle = true;
+          break;
+        } else {
+          obstacle = false;
+        }
+      }
+      if (obstacle === false) {
+        clear_block();
+        //부품 하나씩 오른쪽으로 보내줘야함.
+        for (i = 0; i < block.length; i++) {
+          block[i]++;
+        }
+        left++;
+        right++;
+        h_loc++;
+        //화면에 블럭 표시
+        color_block();
+      }
+    }
+  }
+
+  //rotate를 기준으로 생성되고 rotate 됐을 때
+  function block_edge() {
+
+    y = [];
+    x = [];
+    for (i = 0; i < block.length; i++) {
+      y.push(Math.floor((block[i] / 10)));
+      x.push(block[i] % 10);
+    }
+
+    up = Math.min.apply(null, y);
+    bottom = Math.max.apply(null, y);
+    left = Math.min.apply(null, x);
+    right = Math.max.apply(null, x);
+
+    console.log("top: " + up);
+    console.log("bottom: " + bottom);
+    console.log("left: " + left);
+    console.log("right: " + right);
+  }
+
+  function rotate_left() {
+    //높이를 더해줄 것이기 때문에 -1 해줌
+    v_loc = up - 1;
+    //현상태 파악 및 회전할 블럭 선택
+    if (rotate !== 3) {
+      rotate++;
+    } else if (rotate = 3) {
+      rotate = 0;
+    }
+
+    //현재 블럭 해제
+    clear_block();
+    //회전
+    block = blocks[idx][rotate].slice(0);
+
+    console.log("block: " + block);
+    //위치조정
+    //x위치 조정
+    x = [];
+    y = [];
+    for (i = 0; i < block.length; i++) {
+      y.push(Math.floor((block[i] / 10)) + v_loc);
+      x.push(block[i] % 10 + h_loc);
+    }
+    console.log("x : " + x);
+    min = Math.max.apply(null, y);
+    max = Math.max.apply(null, x);
+    console.log("max : " + max);
+    //오른쪽으로 9보다 넘어갔을 때
+    console.log("black[" + up + "][" + max + "] : " + black[up][max]);
+    console.log("black[" + up + "][" + max + "] === 1: " + Boolean(black[up][max] !== null));
+    if (max > 9) {
+      h_loc -= max - 9;
+      //오른쪽에 블럭이 있을 때
+    }
+    if (min > 22) {
+      v_loc -= min - 22;
+    }
+    for (i = 0; i < block.length; i++) {
+      block[i] += h_loc + v_loc * 10;
+    }
+    block_edge();
+    // 오른쪽 혹은 아래에 블럭이 있을 때
+    console.log("block: " + block);
+
+    //블럭 표시
+    color_block();
+  }
+
+  function clear_block() {
+    for (i = 0; i < block.length; i++) {
+      tdcss = "td.td" + block[i];
+      $(tdcss).css("background-color", "rgb(240, 240, 240)");
+    }
+  }
+
+  function row_clean() {
+    clean = 0;
+    //삭제할 행들을 찾아낸다
+    for (y = 0; y < 23; y++) {
+      for (x = 0; x < 10; x++) {
+        if (black[y][x] === null) {
+          full[y] = 0;
+          break;
+        } else {
+          full[y] = 1;
+        }
+      }
+      clean += full[y];
+    }
+
+    console.log("full: " + full);
+    console.log("clean !== 0: " + Boolean(clean !== 0));
+    if (clean !== 0) {
+      console.log("full: " + full);
+      for (y = 22; y > 0; y--) {
+        if (full[y] === 1) {
+          for (x = 0; x < 10; x++) {
+            tdcss = "td.td" + y + x;
+            $(tdcss).css("background-color", "rgb(240, 240, 240)");
+          }
+        }
+      }
+
+      setTimeout(function () {
+
+        for (y = 22; y > 0; y--) {
+          if (full[y] === 1) {
+            for (x = 0; x < 10; x++) {
+              tdcss = "td.td" + y + x;
+              color = qnt[black[y][x]];
+              $(tdcss).css("background-color", color);
+            }
+          }
+        }
+
+      }, 100);
+
+      setTimeout(function () {
+        console.log("full: " + full);
+        for (y = 22; y > 0; y--) {
+          if (full[y] === 1) {
+            for (x = 0; x < 10; x++) {
+              tdcss = "td.td" + y + x;
+              $(tdcss).css("background-color", "rgb(240, 240, 240)");
+            }
+          }
+        }
+
+      }, 200);
+
+      setTimeout(function () {
+        console.log("cnt: " + cnt);
+        for (i = 22; i >= 0; i--) {
+          console.log(full[i]);
+          if (full[i] === 1) {
+            cnt++;
+            line++;
+            full[i] = 0;
+          } else if (cnt !== 0) {
+            //없어진 줄만큼 밑으로
+            for (y = i; y >= 0; y--) {
+              for (x = 0; x < 10; x++) {
+                black[y + cnt][x] = black[y][x];
+                tdcss = "td.td" + (y + cnt) + x;
+                if (black[y + cnt][x] === null) {
+                  color = "rgb(240, 240, 240)";
+                } else {
+                  color = qnt[black[y + cnt][x]];
+                }
+                $(tdcss).css("background-color", color);
+              }
+            }
+            point_line();
+            i += cnt;
+            cnt = 0;
+          }
+        }
+        //새로운 블럭 생성
+        create_block();
+        console.log("create_block clean true");
+      }, 300);
+    }
+
+  }
+
+  function color_block() {
+    color = qnt[idx];
+    for (i = 0; i < block.length; i++) {
+      tdcss = "td.td" + block[i];
+      $(tdcss).css("background-color", color);
+    }
+  }
+
+
+  function point_line() {
+    var min = document.getElementById("min");
+    var pro = document.getElementById("pro");
+    var lvl = document.getElementById("lvl");
+
+    //연습모드
+    //없앤 line을 센다
+    //line * 10만큼 점수가 오른다.
+    //100을 넘어가면 레벨이 오른다.
+
+    //대결모드
+    //이겼는지 졌는지 확인
+    //이겼으면 없앤 줄만큼 점수가 오른다.
+    //졌으면 이긴 사람이 얻은 점수만큼 줄어든다.
+
+    //최종 점수를 계산한다.
+    newPoint = cnt * 10 + point;
+    oldPoint = point;
+
+    $(min).css("transition", "width .6s ease");
+    $(pro).css("transition", "width .6s ease");
+
+    $(min).css("background-color", "rgba(0, 0, 0, 0.2)");
+
+    //점수가 100 이상이면 레벨 업
+    if (newPoint >= 100) {
+      newPoint -= 100;
+      minPoint = 100 - oldPoint;
+      level++;
+      //min: 추가된 점수만큼 생성
+      $(min).css("width", minPoint + "%");
+      //pro: 100%
+      //min: 0
+      setTimeout(function () {
+        $(min).css("width", "0");
+        $(pro).css("width", "100%");
+      }, 600);
+      //pro: 0
+      setTimeout(function () {
+        $(pro).css("transition", "none");
+        $(pro).css("width", "0");
+      }, 700);
+      //min: 점수만큼 생성
+      setTimeout(function () {
+        $(min).css("width", newPoint + "%");
+//                        $(min).text("+" + newPoint);
+      }, 800);
+      //pro: 점수만큼 생성
+      //min: 0
+      setTimeout(function () {
+        $(min).css("width", "0");
+        $(pro).css("transition", "width .6s ease");
+        $(pro).css("width", newPoint + "%");
+        $(lvl).css("color", "rgb(55, 191, 230)");
+        lvl.innerHTML = "Lv. " + level;
+        $(lvl).fadeOut(200).fadeIn(200).fadeOut(200).fadeIn(200);
+        setTimeout(function () {
+          $(lvl).css("color", "#999");
+        }, 1600);
+      }, 1400);
+
+      //레벨에 변동이 없으면
+    } else {
+      minPoint = newPoint - oldPoint;
+      $(min).css("width", minPoint + "%");
+      setTimeout(function () {
+        $(min).css("width", "0");
+        $(pro).css("width", newPoint + "%");
+      }, 600);
+
+    }
+    point = newPoint;
+    //db와 session에 점수를 저장한다.
+    var pntLvl = {};
+    pntLvl["newPoint"] = newPoint;
+    pntLvl["newLevel"] = level;
+
+    $.ajax({
+      type: "POST",
+      contentType: "application/json",
+      url: "tetris",
+      data: JSON.stringify(pntLvl),
+      dataType: 'json'
+    });
+
+  }
+
+  function replay() {
+    location.reload();
+  }
+</script>
