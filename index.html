@@ -9,7 +9,10 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=VT323">
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script
+            src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+            integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8="
+            crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <style>
         @CHARSET "UTF-8";
@@ -27,7 +30,7 @@
             bottom: 0;
             overflow: hidden;
             -webkit-overflow-scrolling: touch;
-            background: linear-gradient(#113369, #5eacf7);
+            background: linear-gradient(#0c122f, #1e2477, #161f52);
         }
 
         /*baseball*/
@@ -41,38 +44,8 @@
             border-color: #8c8c8c;
         }
 
-        .board {
-            background: rgba(255, 255, 255, 0.7);
-            border-radius: 35px;
-            padding: 15px 15px 28px 15px;
-            position: relative;
-            z-index: 9999;
-            text-align: center;
-        }
-
-        .title {
-            height: 233px;
-            margin-top: 89px;
-            z-index: 9999;
-            position: relative;
-            text-align: center;
-            font-family: 'Orbitron', sans-serif;
-        }
-
         .title h1 {
             padding-top: 109px
-        }
-
-        .number {
-            margin: auto;
-            display: inline-flex;
-        }
-
-        div#msg, div#msg2 {
-            margin-top: 18px;
-            text-align: center;
-            font-family: 'VT323', monospace;
-            font-size: 20px;
         }
 
         input {
@@ -84,29 +57,10 @@
             margin-right: 20px;
         }
 
-        input#num3 {
-            margin-right: 0px;
-        }
-
         /*숫자 입력칸의 화살표를 삭제*/
         input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
             -webkit-appearance: none !important;
             margin: 0;
-        }
-
-        div#ans1, div#ans2, div#ans3 {
-            width: 52px;
-            height: 52px;
-            padding: 5px;
-            text-align: center;
-            font-size: 41px;
-            margin-right: 20px;
-            font-family: Arial;
-
-        }
-
-        div#ans3 {
-            margin-right: 0px;
         }
 
         .progress {
@@ -120,9 +74,6 @@
             background-color: aqua;
         }
 
-        .id {
-            height: 42px;
-        }
 
         .btn-link {
             color: black;
@@ -161,6 +112,8 @@
             justify-content: flex-end;
             height: 45px;
             color: #fff;
+            background: linear-gradient(45deg, transparent, #453077);
+            box-shadow: 0 0 1px 1px #ffffff1c inset;
         }
 
         div#min {
@@ -184,8 +137,8 @@
 
         /*tetris*/
         .tetris-table {
-            border-spacing: 1px;
-            border-collapse: separate;
+            /*border-spacing: 1px;*/
+            /*border-collapse: separate;*/
             position: absolute;
             top: 90px;
             left: 0;
@@ -197,13 +150,15 @@
         }
 
         .tetris-table tbody {
-            /*background-color: #5d5d5d*/
+            background: linear-gradient(90deg, #00000047, black, black, black, #00000047);
+            border: 1px solid #ffffffb8;
+            box-shadow: 0 0 5000px -10px #ffffff36, 0 0 16px 2px #ffffff7a;
         }
 
         .tetris-table td {
             width: 25px;
             height: 25px;
-            background-color: rgba(51, 51, 51, 0.4);
+            border: 1px solid #ffffff1c;
         }
 
         .game-end {
@@ -337,6 +292,43 @@
                 left: 4vw;
                 font-size: 3.5vw;
             }
+        }
+
+        .tetris-block-empty {
+            /*background: rgba(51, 51, 51, 0.4);*/
+            border: none;
+            box-shadow: none;
+        }
+        .tetris-table .tetris-block {
+            box-shadow: 0 0 3px 1px #ffffff inset, 0 0 20px 1px #ffffffab;
+        }
+        /*cyan*/
+        .tetris-block-0 {
+            background: linear-gradient(135deg, #92f9f4, #05d8f3 60%, #148ccd);
+        }
+        /*yellow*/
+        .tetris-block-1 {
+            background: linear-gradient(135deg, #fdf2d7, #fddb18 60%, #c4730f);
+        }
+        /*violet*/
+        .tetris-block-2 {
+            background: linear-gradient(135deg, #fdd2fb, #fe4fea 60%, #400ba5);
+        }
+        /*green*/
+        .tetris-block-3 {
+            background: linear-gradient(135deg, #ecf268, #1ccb11 60%, #068b11);
+        }
+        /*red*/
+        .tetris-block-4 {
+            background: linear-gradient(135deg, #f78fa8, #f21421 60%, #920c11);
+        }
+        /*blue*/
+        .tetris-block-5 {
+            background: linear-gradient(135deg, #2cdbf7, #0b5ed7 60%, #083bad);
+        }
+        /*orange*/
+        .tetris-block-6 {
+            background: linear-gradient(135deg, #fcca72, #fc7e0d 60%, #eb4a06);
         }
     </style>
     <title>Tetris</title>
@@ -920,10 +912,14 @@
     color_block();
   }
 
+  function classNameLikeTetrisBlock(index, className) {
+      return 'tetris-block ' + (className.match(/(^|\s)tetris-block\S+/g) || []).join(' ');
+  }
+
   function clear_block() {
     for (i = 0; i < block.length; i++) {
       tdcss = "td.td" + block[i];
-      $(tdcss).css({"background": "rgba(51, 51, 51, 0.4)", "border": "none"});
+        $(tdcss).removeClass(classNameLikeTetrisBlock).addClass('tetris-block-empty');
     }
   }
 
@@ -950,7 +946,7 @@
         if (full[y] === 1) {
           for (x = 0; x < 10; x++) {
             tdcss = "td.td" + y + x;
-            $(tdcss).css({"background": "rgba(51, 51, 51, 0.4)", "border": "none"});
+              $(tdcss).removeClass(classNameLikeTetrisBlock).addClass('tetris-block-empty');
           }
         }
       }
@@ -961,8 +957,9 @@
           if (full[y] === 1) {
             for (x = 0; x < 10; x++) {
               tdcss = "td.td" + y + x;
-              color = qnt[black[y][x]];
-              $(tdcss).css({"background": `linear-gradient(135deg, ${qntlight[black[y][x]]}, ${color} 60%, ${qntdark[black[y][x]]})`, "border": `2px outset transparent`});
+              // color = qnt[black[y][x]];
+                // $(tdcss).removeClass(classNameLikeTetrisBlock);
+              $(tdcss).removeClass(classNameLikeTetrisBlock).addClass('tetris-block tetris-block-' + black[y][x]);
             }
           }
         }
@@ -975,7 +972,7 @@
           if (full[y] === 1) {
             for (x = 0; x < 10; x++) {
               tdcss = "td.td" + y + x;
-              $(tdcss).css({"background": "rgba(51, 51, 51, 0.4)", "border": "none"});
+                $(tdcss).removeClass(classNameLikeTetrisBlock).addClass('tetris-block-empty');
             }
           }
         }
@@ -997,11 +994,9 @@
                 black[y + cnt][x] = black[y][x];
                 tdcss = "td.td" + (y + cnt) + x;
                 if (black[y + cnt][x] === null) {
-                  color = "rgba(51, 51, 51, 0.4)";
-                  $(tdcss).css({"background": color, "border": `none`});
+                    $(tdcss).removeClass(classNameLikeTetrisBlock).addClass('tetris-block-empty');
                 } else {
-                  color = qnt[black[y + cnt][x]];
-                  $(tdcss).css({"background": `linear-gradient(135deg, ${qntlight[black[y + cnt][x]]}, ${color} 60%, ${qntdark[black[y + cnt][x]]})`, "border": `2px outset transparent`});
+                    $(tdcss).removeClass(classNameLikeTetrisBlock).addClass('tetris-block tetris-block-' + black[y + cnt][x]);
                 }
 
               }
@@ -1013,7 +1008,6 @@
         }
         //새로운 블럭 생성
         create_block();
-        console.log("create_block clean true");
       }, 300);
     }
 
@@ -1023,7 +1017,7 @@
     color = qnt[idx];
     for (i = 0; i < block.length; i++) {
       tdcss = "td.td" + block[i];
-      $(tdcss).css({"background": `linear-gradient(135deg, ${qntlight[idx]}, ${color} 60%, ${qntdark[idx]})`, "border": `2px outset transparent`});
+        $(tdcss).removeClass(classNameLikeTetrisBlock).addClass('tetris-block tetris-block-' + idx);
     }
   }
 
@@ -1081,12 +1075,11 @@
         $(min).css("width", "0");
         $(pro).css("transition", "width .6s ease");
         $(pro).css("width", newPoint + "%");
-        $(lvl).css("color", "#0b5ed7");
         lvl.innerHTML = "Lv. " + level;
-        $(lvl).fadeOut(200).fadeIn(200).fadeOut(200).fadeIn(200);
-        setTimeout(function () {
-          $(lvl).css("color", "#fff");
-        }, 1600);
+        $(lvl).fadeOut().fadeIn().fadeOut().fadeIn();
+        // setTimeout(function () {
+        //   $(lvl).css("color", "#fff");
+        // }, 1600);
       }, 1400);
 
       //레벨에 변동이 없으면
@@ -1105,13 +1098,13 @@
     pntLvl["newPoint"] = newPoint;
     pntLvl["newLevel"] = level;
 
-    $.ajax({
-      type: "POST",
-      contentType: "application/json",
-      url: "tetris",
-      data: JSON.stringify(pntLvl),
-      dataType: 'json'
-    });
+    // $.ajax({
+    //   type: "POST",
+    //   contentType: "application/json",
+    //   url: "tetris",
+    //   data: JSON.stringify(pntLvl),
+    //   dataType: 'json'
+    // });
 
   }
 
